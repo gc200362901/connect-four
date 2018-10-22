@@ -15,7 +15,7 @@ class Board extends Component {
     super(props);
     this.state = {
       squares: Array(30).fill(null),
-      redsTurn: true
+      player1: true
     };
   }
 
@@ -37,16 +37,16 @@ class Board extends Component {
     while (this.state.squares[i] == null && i <= squares.length) {
       i += 6;
       if (i >= squares.length && this.state.squares[i] == null) {
-        squares[i - 6] = this.state.redsTurn ? "◎" : "◍";
+        squares[i - 6] = this.state.player1 ? "◎" : "◍";
         this.setState({
           squares: squares,
-          redsTurn: !this.state.redsTurn
+          player1: !this.state.player1
         });
       } else if (i <= squares.length && this.state.squares[i] != null) {
-        squares[i - 6] = this.state.redsTurn ? "◎" : "◍";
+        squares[i - 6] = this.state.player1 ? "◎" : "◍";
         this.setState({
           squares: squares,
-          redsTurn: !this.state.redsTurn
+          player1: !this.state.player1
         });
       }
     }
@@ -58,7 +58,7 @@ class Board extends Component {
     if (winner) {
       status = "Winner: " + winner;
     } else {
-      status = "Next player: " + (this.state.redsTurn ? "◎" : "◍");
+      status = "Next player: " + (this.state.player1 ? "◎" : "◍");
     }
 
     return (
