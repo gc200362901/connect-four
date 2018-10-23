@@ -55,7 +55,9 @@ class Board extends Component {
   render() {
     const winner = calculateWinner(this.state.squares);
     let status;
-    if (winner) {
+    if (!this.state.squares.includes(null)) {
+      status = "DRAW";
+    } else if (winner) {
       status = "Winner: " + winner;
     } else {
       status = "Next player: " + (this.state.player1 ? "◎" : "◍");
